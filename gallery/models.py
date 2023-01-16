@@ -2,6 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Photography(models.Model):
+    class Meta:
+        verbose_name = 'Fotografia'
+        verbose_name_plural = 'Fotografias'
+
     name = models.CharField(
         max_length=100,
         null=False,
