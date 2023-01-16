@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 
 from gallery.models import Photography
 
@@ -15,5 +15,11 @@ def index(request):
 
     return render(request, 'gallery/index.html', context)
 
-def image(request):
-    return render(request, 'gallery/image.html')
+def image(request, pk):
+    photo = get_object_or_404(Photography, pk=pk)
+
+    context = {
+        'photo': photo
+    }
+
+    return render(request, 'gallery/image.html', context)

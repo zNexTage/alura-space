@@ -32,14 +32,14 @@
                         <ul class="cards__lista">
                             {% for photo in photos %}
                                 <li class="card">
-                                    <a href="{% url 'gallery:image' %}">
+                                    <a href="{% url 'gallery:image' pk=photo.pk %}">
                                         <img class="card__imagem" src="{% static '/assets/imagens/galeria/' %}{{photo.photo}}" alt="foto">
                                     </a>
                                     <span class="card__tag">Estrelas</span>
                                     <div class="card__info">
                                         <p class="card__titulo">{{ photo.name }}</p>
                                         <div class="card__texto">
-                                            <p class="card__descricao">{{ photo.description }}</p>
+                                            <p class="card__descricao">{{ photo.legend }}</p>
                                             <span>
                                                 <img src="{% static '/assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
                                             </span>
