@@ -58,11 +58,11 @@ class Photography(models.Model):
     is_published = models.BooleanField(default=False)
     is_published.verbose_name = 'Publicado?'
 
-    created_at = models.DateTimeField(
+    date = models.DateTimeField(
         default=datetime.now,
         blank=False
     )
-    created_at.verbose_name = 'Criado em'
+    date.verbose_name = 'Data da fotografia'
 
     def __str__(self) -> str:
         return f'Fotografia - @{self.name}'
