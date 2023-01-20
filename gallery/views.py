@@ -8,7 +8,7 @@ from gallery.models import Photography
 # Create your views here.
 def index(request):
     # we want only published photos.
-    photos = Photography.objects.filter(
+    photos = Photography.objects.order_by('-date').filter(
         is_published=True
     )
 
