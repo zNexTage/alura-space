@@ -7,7 +7,10 @@ from gallery.models import Photography
 
 # Create your views here.
 def index(request):
-    photos = Photography.objects.all()
+    # we want only published photos.
+    photos = Photography.objects.filter(
+        is_published=True
+    )
 
     context = {
         'photos': photos
