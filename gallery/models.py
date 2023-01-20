@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 
 # Create your models here.
@@ -56,6 +57,12 @@ class Photography(models.Model):
 
     is_published = models.BooleanField(default=False)
     is_published.verbose_name = 'Publicado?'
+
+    created_at = models.DateTimeField(
+        default=datetime.now,
+        blank=False
+    )
+    created_at.verbose_name = 'Criado em'
 
     def __str__(self) -> str:
         return f'Fotografia - @{self.name}'
