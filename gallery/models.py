@@ -7,10 +7,11 @@ class Photography(models.Model):
         verbose_name_plural = 'Fotografias'
     
 
-    NEBULA = 1
-    STAR = 2
-    GALAXY = 3
-    PLANET = 4
+    # must be a string.
+    NEBULA = '1'
+    STAR = '2'
+    GALAXY = '3'
+    PLANET = '4'
 
     CATEGORY_CHOICES = (
         (NEBULA, 'Nebulosa'),
@@ -52,6 +53,9 @@ class Photography(models.Model):
         default=''
     )
     category.verbose_name = 'Categoria'
+
+    is_published = models.BooleanField(default=False)
+    is_published.verbose_name = 'Publicado?'
 
     def __str__(self) -> str:
         return f'Fotografia - @{self.name}'
