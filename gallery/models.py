@@ -41,10 +41,9 @@ class Photography(models.Model):
     )
     description.verbose_name = 'Descrição'
 
-    photo = models.CharField(
-        max_length=100,
-        null=False,
-        blank=False
+    photo = models.ImageField(
+        upload_to="fotos/%Y/%M/%d/",
+        blank=True
     )
     photo.verbose_name = 'Foto'
 
