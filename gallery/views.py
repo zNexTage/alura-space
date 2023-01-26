@@ -26,3 +26,15 @@ def image(request, pk):
     }
 
     return render(request, 'gallery/image.html', context)
+
+def search(request):
+    photos = Photography.objects.order_by('-date').filter(
+        is_published=True
+    )
+
+    q = request.GET.get('q')
+
+    if q:
+        photos = photos.filter(name__icontains=q)
+        
+    return render(request, 'gallery/search.html',{ 'photos': photos })

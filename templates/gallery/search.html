@@ -41,7 +41,7 @@
                                 <li class="card">
                                     {% if not photo.photo %}
                                         <a href="{% url 'gallery:image' pk=photo.pk %}" >
-                                            <img class="card__imagem" src="{% static '/assets/imagens/not-found.png' %}" alt="foto">
+                                            <img class="card__imagem" src="{% static '/assets/imagens/not_found.png' %}" alt="foto">
                                         </a>
                                     {% else %}
                                         <a href="{% url 'gallery:image' pk=photo.pk %}" >
