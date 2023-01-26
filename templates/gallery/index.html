@@ -32,9 +32,15 @@
                         <ul class="cards__lista">
                             {% for photo in photos %}
                                 <li class="card">
-                                    <a href="{% url 'gallery:image' pk=photo.pk %}">
-                                        <img class="card__imagem" src="{% static '/assets/imagens/galeria/' %}{{photo.photo}}" alt="foto">
-                                    </a>
+                                    {% if not photo.photo %}
+                                        <a href="{% url 'gallery:image' pk=photo.pk %}" >
+                                            <img class="card__imagem" src="{% static '/assets/imagens/not_found.png' %}" alt="foto">
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'gallery:image' pk=photo.pk %}" >
+                                            <img class="card__imagem" src="{{photo.photo.url}}" alt="foto">
+                                        </a>
+                                    {% endif %}
                                     <span class="card__tag">Estrelas</span>
                                     <div class="card__info">
                                         <p class="card__titulo">{{ photo.name }}</p>
