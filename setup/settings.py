@@ -45,6 +45,7 @@ DJANGO_APPS = [
 
 LOCAL_APPS = [
     'gallery.apps.GalleryConfig',
+    'users.apps.UsersConfig'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
