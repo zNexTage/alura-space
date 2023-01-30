@@ -14,11 +14,24 @@
     <link rel="stylesheet" href="{% static '/styles/style.css' %}">
 </head>
 
-<body>
-    {% include 'gallery/partials/_header.html' %}
-    {% block content %}
-    {% endblock content %}
-    {% include 'gallery/partials/_footer.html' %}
+<body>    
+    <div class="pagina-inicial">    
+        {% include 'gallery/partials/_header.html' %}
+        
+        <main class="principal">
+            <section class="menu-lateral">
+                <nav class="menu-lateral__navegacao">
+                    <a href="#"><img src="{% static '/assets/ícones/1x/Home - ativo.png' %}"> Home</a>
+                    <a href="#"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}"> Mais vistas</a>
+                    <a href="#"><img src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Novas</a>
+                    <a href="#"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Surpreenda-me</a>
+                </nav>
+            </section>
+            {% block content %}
+            {% endblock content %}
+        </main>
+        {% include 'gallery/partials/_footer.html' %}
+    </div>
 </body>
 
 </html>
