@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from users.forms import LoginForm
+from users.forms import LoginForm, RegisterForm
 
 # Create your views here.
 
@@ -19,4 +19,10 @@ def login(request):
 
 
 def add(request):
-    return render(request, 'users/add.html')
+    form = RegisterForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'users/add.html', context)

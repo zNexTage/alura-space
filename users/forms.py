@@ -25,3 +25,52 @@ class LoginForm(forms.Form):
         )
     )
 
+class RegisterForm(forms.Form):
+    name = forms.CharField(
+        max_length=100,
+        label='Nome',
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Ex.: Enya, Takai ...'
+            }
+        )
+    )
+
+    email = forms.EmailField(
+        max_length=100,
+        label='Email',
+        required=True,
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Ex.: enya@email.com ...'
+            }
+        )
+    )
+
+    password_1 = forms.CharField(
+        max_length=70,
+        label='Senha',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Digite sua senha'
+            }
+        )
+    )
+
+    password_2 = forms.CharField(
+        max_length=70,
+        label='Confirme sua senha',
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Digite sua senha novamente'
+            }
+        )
+    )
+
