@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.urls import reverse
 
 from users.forms import LoginForm, RegisterForm
@@ -26,8 +26,12 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
 
+                messages.success(request, f'Login realizado com sucesso! Bem vindo, {user.get_username()}')
+
                 return redirect(reverse('gallery:index'))
             else:
+                messages.error(request, 'Não foi possível realizar o login. Verifique suas credenciais.')
+
                 return redirect(reverse('users:login'))
 
     context = {
@@ -57,6 +61,8 @@ def add(request):
         if form.is_valid():
 
             if form['password_1'].value() != form['password_2'].value():
+                messages.error(request, 'As senhas não são iguais.')
+
                 return redirect(reverse('users:add'))
 
             name = form.cleaned_data.get('name')
@@ -64,6 +70,8 @@ def add(request):
             password = form.cleaned_data.get('password_1')
 
             if User.objects.filter(username=name).exists():
+                messages.error(request, f'Já existe um usuário com o nome {name}')
+
                 return redirect(reverse('users:add'))
 
             user = User.objects.create_user(
@@ -73,6 +81,8 @@ def add(request):
             )
 
             user.save()
+
+            messages.success(request, 'Cadastro realizado com sucesso')
 
             return redirect(reverse('users:login'))
 

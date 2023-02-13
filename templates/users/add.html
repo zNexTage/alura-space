@@ -7,6 +7,14 @@
     <form action="{% url 'users:add' %}" method="POST">
         {% csrf_token %}
 
+        <ul>
+            {% for message in messages %}
+                <li class="alert alert-success" role="alert">
+                    {{message}}
+                </li>
+            {% endfor %}
+        </ul>
+
         <div class="row">
             {% for field in form.visible_fields %}
                 <div class="col-12 col-lg-12 mb-2">
