@@ -45,6 +45,13 @@ def login(request):
     )
 
 
+def logout(request):
+    auth.logout(request)
+
+    messages.success(request, 'Logout realizado com sucesso')
+
+    return redirect('users:login')
+
 
 def add(request):
     ''' Accept GET and POST methods
