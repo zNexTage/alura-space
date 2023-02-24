@@ -37,7 +37,7 @@
                                 </div>
                             {% else %}
                             {% for photo in photos %}
-                                <li class="card">
+                                <li class="card__item">
                                     {% if not photo.photo %}
                                         <a href="{% url 'gallery:image' pk=photo.pk %}" >
                                             <img class="card__imagem" src="{% static '/assets/imagens/not-found.png' %}" alt="foto">
