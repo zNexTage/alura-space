@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Photography(models.Model):
@@ -62,6 +63,15 @@ class Photography(models.Model):
         blank=False
     )
     date.verbose_name = 'Data da fotografia'
+
+    user = models.ForeignKey(
+        to=User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        related_name='user' # Used in query 
+    )
+    user.verbose_name = 'Upado(a) por'
 
     def __str__(self) -> str:
         return f'Fotografia - @{self.name}'
