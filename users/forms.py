@@ -1,5 +1,6 @@
 from django import forms
 
+
 class LoginForm(forms.Form):
     name = forms.CharField(
         max_length=100,
@@ -24,6 +25,7 @@ class LoginForm(forms.Form):
             }
         )
     )
+
 
 class RegisterForm(forms.Form):
     name = forms.CharField(
@@ -74,3 +76,15 @@ class RegisterForm(forms.Form):
         )
     )
 
+    # validated only the name field
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+
+        if name:
+            name = name.strip()
+
+            if ' ' in name:
+                raise forms.ValidationError(
+                    'Não é possível inserir espaços dentro do campo nome')
+
+        return name
