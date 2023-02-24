@@ -1,12 +1,17 @@
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 
 from gallery.models import Photography
+from django.contrib import messages
 
 
 
 # Create your views here.
 def index(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Você precisa se autenticar")
+
+        return redirect('users:login')
+
     # we want only published photos.
     photos = Photography.objects.order_by('-date').filter(
         is_published=True
@@ -28,6 +33,11 @@ def image(request, pk):
     return render(request, 'gallery/image.html', context)
 
 def search(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Você precisa se autenticar")
+
+        return redirect('users:login')
+
     photos = Photography.objects.order_by('-date').filter(
         is_published=True
     )
