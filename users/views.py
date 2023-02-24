@@ -66,12 +66,6 @@ def add(request):
     if request.method == 'POST':
 
         if form.is_valid():
-
-            if form['password_1'].value() != form['password_2'].value():
-                messages.error(request, 'As senhas não são iguais.')
-
-                return redirect(reverse('users:add'))
-
             name = form.cleaned_data.get('name')
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password_1')

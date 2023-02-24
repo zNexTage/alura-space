@@ -88,3 +88,12 @@ class RegisterForm(forms.Form):
                     'Não é possível inserir espaços dentro do campo nome')
 
         return name
+
+    def clean_password_2(self):
+        pass_1 = self.cleaned_data.get('password_1')
+        pass_2 = self.cleaned_data.get('password_2')
+
+        if pass_1 != pass_2:
+                raise forms.ValidationError('As senhas não são iguais')
+        
+        return super().clean()
