@@ -7,7 +7,7 @@
     <form action="{% url 'users:login' %}" method="post">
         {% csrf_token %}
 
-        {% include 'gallery/partials/_alerts.html' with messages=messages %}
+        {% include 'partials/_alerts.html' with messages=messages %}
 
         <div class="row">
             <!-- <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
