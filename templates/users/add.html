@@ -7,13 +7,7 @@
     <form action="{% url 'users:add' %}" method="POST">
         {% csrf_token %}
 
-        <ul>
-            {% for message in messages %}
-                <li class="alert alert-success" role="alert">
-                    {{message}}
-                </li>
-            {% endfor %}
-        </ul>
+        {% include 'gallery/partials/_alerts.html' with messages=messages %}
 
         <div class="row">
             {% for field in form.visible_fields %}

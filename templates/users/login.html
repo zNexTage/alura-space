@@ -7,13 +7,7 @@
     <form action="{% url 'users:login' %}" method="post">
         {% csrf_token %}
 
-        <ul>
-        {% for message in messages %}
-            <li class="alert alert-success" role="alert">
-                {{message}}
-            </li>
-            {% endfor %}
-        </ul>
+        {% include 'gallery/partials/_alerts.html' with messages=messages %}
 
         <div class="row">
             <!-- <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
